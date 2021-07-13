@@ -6,7 +6,7 @@ cd /var/www
 sudo mkdir chat
 sudo chown {{YOUR_USER}}:{{YOUR_USER}} chat
 
-git clone git@github.com:justEugene94/Chat.git chat
+git clone git@github.com:justEugene94/project-chat.git chat
 ```
 
 * #### Create `.env` File
