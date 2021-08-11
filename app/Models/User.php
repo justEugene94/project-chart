@@ -50,6 +50,6 @@ class User extends Authenticatable
      */
     public function chats(): BelongsToMany
     {
-        return $this->belongsToMany(Chat::class, 'chat_user', 'user_id', 'chat_id');
+        return $this->belongsToMany(Chat::class, 'chat_users', 'user_id', 'chat_id');
     }
 }
