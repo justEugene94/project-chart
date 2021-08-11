@@ -2,12 +2,23 @@
 
 namespace App\Models;
 
+use App\Models\Chat\Message;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property int    $id
+ * @property string $name
+ * @property string $email
+ *
+ * Relationships:
+ * @property Chat[]    $chats
+ * @property Message[] $messages
+ */
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, SoftDeletes;
@@ -51,5 +62,13 @@ class User extends Authenticatable
     public function chats(): BelongsToMany
     {
         return $this->belongsToMany(Chat::class, 'chat_users', 'user_id', 'chat_id');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class, 'user_id', 'id');
     }
 }
