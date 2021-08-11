@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * Relationships:
  * @property User $user
  * @property Chat $chat
+ * @property Message\Notification[] $notifications
  */
 class Message extends Model
 {
@@ -48,5 +50,13 @@ class Message extends Model
     public function chat(): BelongsTo
     {
         return $this->belongsTo(Chat::class, 'chat_id', 'id');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Message\Notification::class, 'notification_id', 'id');
     }
 }

@@ -18,6 +18,7 @@ use Illuminate\Notifications\Notifiable;
  * Relationships:
  * @property Chat[]    $chats
  * @property Message[] $messages
+ * @property Message\Notification[] $notifications
  */
 class User extends Authenticatable
 {
@@ -70,5 +71,13 @@ class User extends Authenticatable
     public function messages(): HasMany
     {
         return $this->hasMany(Message::class, 'user_id', 'id');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Message\Notification::class, 'notification_id', 'id');
     }
 }

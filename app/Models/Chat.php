@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * Relationships:
  * @property User[]    $users
  * @property Message[] $messages
+ * @property Message\Notification[] $notifications
  */
 class Chat extends Model
 {
@@ -45,5 +46,13 @@ class Chat extends Model
     public function messages(): HasMany
     {
         return $this->hasMany(Message::class, 'chat_id', 'id');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Message\Notification::class, 'notification_id', 'id');
     }
 }
