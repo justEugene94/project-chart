@@ -23,7 +23,7 @@ cp .env.example .env
 sudo service nginx stop
 sudo service mysql stop
 
-./vendor/bin/sail up -d
+vendor/bin/sail up -d
 ```
 
 * #### Install Composer
