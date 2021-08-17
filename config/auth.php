@@ -100,6 +100,15 @@ return [
         ],
     ],
 
+    'passport' => [
+        'grant' => [
+            'password' => [
+                'client_id'     => env('AUTH_PASSPORT_PG_CLIENT_ID'),
+                'client_secret' => env('AUTH_PASSPORT_PG_CLIENT_SECRET'),
+            ],
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Password Confirmation Timeout
